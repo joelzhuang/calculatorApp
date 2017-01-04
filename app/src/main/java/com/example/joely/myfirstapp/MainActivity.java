@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity{
 
     TextView tvResult;
 
-    String oper = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -251,22 +250,44 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public int calculateResult(){
-        String value1 = "";
-        String value2 = "";
-        char currentOperator;
-        int currentResult;
+        String value = "";
+        char currentOperator = '+';
+        int currentResult = 0;
         int i = 0;
-        while (i < position)
-            if(Character.isDigit(calculate[i])){
-                value1 = value1 + calculate[i];
-                i++;
-            } else {
-                // must be operator value
-                currentOperator = calculate[i];
 
-                //read integers after operator
+        //accumulate current result for first integer
+        while (Character.isDigit(calculate[i])) {
+            value = value + calculate[i];
+            i++;
+        }
+        currentResult = Integer.parseInt(value);
+        while (i < position){
+            // must be operator value
+            currentOperator = calculate[i];
+            i++;
+
+            //read integers after operator until you reach the next operator
+            while (Character.isDigit(calculate[i])) {
+                value = value + calculate[i];
+                i++;
+            }
+
+            switch (currentOperator){
+                case '+':
+                    currentResult = currentResult + Integer.parseInt(value);
+                    break;
+                case '-':
+                    currentResult = currentResult - Integer.parseInt(value);
+                    break;
+                case '*':
+                    currentResult = currentResult * Integer.parseInt(value);
+                    break;
+                case '/':
+                    currentResult = currentResult / Integer.parseInt(value);
+                    break;
             }
         }
+        return currentResult;
     }
 }
 
