@@ -1,12 +1,9 @@
 package com.example.joely.myfirstapp;
 
-import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -18,6 +15,8 @@ public class MainActivity extends AppCompatActivity{
     Button btnMlt;
     Button btnDiv;
     Button btnEquals;
+    Button btnAC;
+    Button btnDEL;
     Button btnDec;
     Button btn1;
     Button btn2;
@@ -50,9 +49,11 @@ public class MainActivity extends AppCompatActivity{
         btnAdd = (Button) findViewById(R.id.buttonPlus);
         btnSub = (Button) findViewById(R.id.buttonMinus);
         btnMlt = (Button) findViewById(R.id.buttonMulti);
-        btnDiv = (Button) findViewById(R.id.buttonDivide);
+        btnDiv = (Button) findViewById(R.id.buttonMulti);
         btnEquals = (Button) findViewById(R.id.buttonEquals);
+        btnAC = (Button) findViewById(R.id.buttonAC);
         btnDec = (Button) findViewById(R.id.buttonDec);
+        btnDEL = (Button) findViewById(R.id.buttonDel);
         btn1 = (Button) findViewById(R.id.button1);
         btn2 = (Button) findViewById(R.id.button2);
         btn3 = (Button) findViewById(R.id.button3);
@@ -73,12 +74,12 @@ public class MainActivity extends AppCompatActivity{
                 // check if length is less than array size
                 if(position < 20 && position != 0){
                     //check if previous character is number
-                    if(Character.isDigit(calculate[position])){
-                        position++;
+                    if(Character.isDigit(calculate[position-1])){
                         calculate[position] = '+';
+                        position++;
                     }
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btnSub.setOnClickListener(new View.OnClickListener(){
@@ -87,12 +88,12 @@ public class MainActivity extends AppCompatActivity{
                 // check if length is less than array size
                 if(position < 20 && position != 0){
                     //check if previous character is number
-                    if(Character.isDigit(calculate[position])){
-                        position++;
+                    if(Character.isDigit(calculate[position-1])){
                         calculate[position] = '-';
+                        position++;
                     }
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btnMlt.setOnClickListener(new View.OnClickListener(){
@@ -101,12 +102,12 @@ public class MainActivity extends AppCompatActivity{
                 // check if length is less than array size
                 if(position < 20 && position != 0){
                     //check if previous character is number
-                    if(Character.isDigit(calculate[position])){
-                        position++;
+                    if(Character.isDigit(calculate[position-1])){
                         calculate[position] = '*';
+                        position++;
                     }
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btnDiv.setOnClickListener(new View.OnClickListener(){
@@ -115,12 +116,12 @@ public class MainActivity extends AppCompatActivity{
                 // check if length is less than array size
                 if(position < 20 && position != 0){
                     //check if previous character is number
-                    if(Character.isDigit(calculate[position])){
-                        position++;
+                    if(Character.isDigit(calculate[position-1])){
                         calculate[position] = '/';
+                        position++;
                     }
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
 
@@ -129,10 +130,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                        position++;
-                        calculate[position] = '1';
+                    calculate[position] = '1';
+                    position++;
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btn2.setOnClickListener(new View.OnClickListener(){
@@ -140,10 +141,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                    position++;
                     calculate[position] = '2';
+                    position++;
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btn3.setOnClickListener(new View.OnClickListener(){
@@ -151,10 +152,11 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                    position++;
                     calculate[position] = '3';
+                    position++;
+
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btn4.setOnClickListener(new View.OnClickListener(){
@@ -162,10 +164,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                    position++;
                     calculate[position] = '4';
+                    position++;
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btn5.setOnClickListener(new View.OnClickListener(){
@@ -173,10 +175,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                    position++;
                     calculate[position] = '5';
+                    position++;
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btn6.setOnClickListener(new View.OnClickListener(){
@@ -184,10 +186,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                    position++;
                     calculate[position] = '6';
+                    position++;
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btn7.setOnClickListener(new View.OnClickListener(){
@@ -195,10 +197,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                    position++;
                     calculate[position] = '7';
+                    position++;
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btn8.setOnClickListener(new View.OnClickListener(){
@@ -206,10 +208,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                    position++;
                     calculate[position] = '8';
+                    position++;
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btn9.setOnClickListener(new View.OnClickListener(){
@@ -217,10 +219,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                    position++;
                     calculate[position] = '9';
+                    position++;
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
         btn0.setOnClickListener(new View.OnClickListener(){
@@ -228,10 +230,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 // check if length is less than array size
                 if(position < 20){
-                    position++;
                     calculate[position] = '0';
+                    position++;
                 }
-                tvResult.setText(calculate.toString());
+                tvResult.setText(String.valueOf(calculate));
             }
         });
 
@@ -240,11 +242,36 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 if(position < 20){
                     //check if previous character is number
-                    if(Character.isDigit(calculate[position])){
+                    if(Character.isDigit(calculate[position-1])){
                         result = calculateResult();
                     }
                 }
-                tvResult.setText(result);
+                calculate = new char[20];
+                position = 0;
+                tvResult.setText(result+"");
+            }
+        });
+
+        btnAC.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                calculate = new char[20];
+                position = 0;
+                tvResult.setText("0");
+            }
+        });
+
+        btnDEL.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(position > 0){
+                    position = position-1;
+                    calculate[position] = 0;
+                    tvResult.setText(String.valueOf(calculate));
+                } else{
+                    tvResult.setText("0");
+                }
+
             }
         });
     }
@@ -254,13 +281,17 @@ public class MainActivity extends AppCompatActivity{
         char currentOperator = '+';
         int currentResult = 0;
         int i = 0;
-
         //accumulate current result for first integer
         while (Character.isDigit(calculate[i])) {
             value = value + calculate[i];
             i++;
         }
         currentResult = Integer.parseInt(value);
+
+        //reset value for second value to be read
+        value = "";
+
+        //go through character array to find next value
         while (i < position){
             // must be operator value
             currentOperator = calculate[i];
